@@ -47,6 +47,18 @@ To get started with the demo, follow these steps:
    ```shell
    git clone https://github.com/rogerb-ds/CLE-Demo.git
    ```
+The resulting hierarchy should be as follows
+
+    demos
+    ├── CLE-Demo
+    │   ├── LICENSE
+    │   ├── README.md
+    │   ├── cqlsh.sh
+    │   ├── demo.py
+    │   ├── requirements.txt
+    │   └── setup.sh
+     ├── GeneratedToken.csv
+    └── secure-connect-bundle.zip
 
 6. Navigate to the cloned repository directory:
 
@@ -57,7 +69,7 @@ To get started with the demo, follow these steps:
 7. Run the `setup.sh` script to download cqlsh, install the required Cassandra driver package, and configure necessary variables for the demo.
 
    ```shell
-   ./setup.sh
+   sh ./setup.sh
    ```
 
 8. Follow the prompts in the setup script to enter the desired keyspace, table, SCB file location, and configuration file location.
@@ -67,7 +79,7 @@ To get started with the demo, follow these steps:
 10. In the window that will display the database, you can run the `cqlsh.sh` script, which launches a CQLSH instance:
 
    ```shell
-   ./cqlsh.sh
+   sh ./cqlsh.sh
    ```
 
 
@@ -84,8 +96,12 @@ To get started with the demo, follow these steps:
    python demo.py
    ```
 
-14. As you insert rows, can you can re-run the select statement from the `python demo.py --setup` output to demonstrate how the rows being added are encrypted in the database, but the python program (using the driver) is able to decrypt and display the encrypted values.
+14. Continue running the demo script to insert as many rows as you like. As you insert rows, can you can re-run the select statement from the `python demo.py --setup` output to demonstrate how the rows being added are encrypted in the database, but the python program (using the driver) is able to decrypt and display the encrypted values.
+   ```shell
+   python demo.py
+   ```
 
 ## Conclusion
 
 The Cassandra Column Encryption Demo provides a practical example of leveraging AES256 column encryption in the Cassandra Python driver. By running the demo and exploring the provided scripts, you can gain a better understanding of how to secure sensitive column data in your Cassandra applications.
+
