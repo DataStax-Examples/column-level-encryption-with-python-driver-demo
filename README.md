@@ -24,7 +24,7 @@ The repository includes the following files:
 
 - `setup.sh`: A shell script that downloads cqlsh, ensures the appropriate Cassandra driver package is installed, and guides users through the setup process by prompting for necessary variables.
 
-## Getting Started
+## How to run the demo
 
 To get started with the demo, follow these steps:
 
@@ -82,6 +82,7 @@ To get started with the demo, follow these steps:
 
    ```shell
    python demo.py
+   ```
 
 14. As you insert rows, can you can re-run the select statement from the `python demo.py --setup` output to demonstrate how the rows being added are encrypted in the database, but the python program (using the driver) is able to decrypt and display the encrypted values.
 
