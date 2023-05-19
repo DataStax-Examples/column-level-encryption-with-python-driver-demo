@@ -10,11 +10,18 @@ if [ -d cqlsh-astra ]; then
 fi
 
 # Get new cqlsh-astra.tar.gz and extract it
-wget https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz
+#wget https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz
+curl -L0 https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz --output cqlsh-astra.tar.gz
+
+if [ ! -f cqlsh-astra.tar.gz ]; then
+    echo "CQL shell package did not download properly. Program exiting..."
+    exit 1
+fi
+
 tar -zxvf cqlsh-astra.tar.gz
 rm cqlsh-astra.tar.gz
 
-pip install -r requirements.txt
+pip install -r requirements.txt || echo 'pip install did not run successfully. Program exiting...'; exit 1
 
 # Get the current keyspace and table from demo.py
 current_keyspace=$(awk -F\' '/keyspace =/ {print $2}' demo.py)
