@@ -21,7 +21,26 @@ fi
 tar -zxvf cqlsh-astra.tar.gz
 rm cqlsh-astra.tar.gz
 
-pip install -r requirements.txt || echo 'pip install did not run successfully. Program exiting...'; exit 1
+# Detect pip command and check if pip is installed
+if command -v pip3 &> /dev/null; then
+    pip=pip3
+elif command -v pip &> /dev/null; then
+    pip=pip
+else
+    echo "pip is not installed"
+    # detect package manager and suggest how to install pip
+    if command -v apt-get &> /dev/null; then
+        echo "Try running 'sudo apt-get install python3-pip'"
+    elif command -v yum &> /dev/null; then
+        echo "Try running 'sudo yum install python3-pip'"
+    elif command -v brew &> /dev/null; then
+        echo "Try running 'brew install python3-pip'"
+    fi
+    echo "Program exiting..."
+    exit 1
+fi
+
+$pip install -r requirements.txt || echo 'pip install did not run successfully. Program exiting...'; exit 1
 
 # Get the current keyspace and table from demo.py
 current_keyspace=$(awk -F\' '/keyspace =/ {print $2}' demo.py)

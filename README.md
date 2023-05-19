@@ -12,7 +12,7 @@ The Cassandra Column Encryption Demo showcases how to leverage [AES256](https://
 
 To run the demo, ensure that the following prerequisites are met:
 
-- Python 3.6 or newer installed on your machine.
+- [Python `3.6` or newer](https://devguide.python.org/versions/#supported-versions) installed on your machine.
 - Access to [an Astra database](https://astra.datastax.com). This comes with [a generous free-tier](https://docs.datastax.com/en/astra-serverless/docs/manage/org/manage-billing.html#_free_plans) to get started quickly.
 - A Unix-like environment (e.g., Linux, macOS, WSL) for running the shell scripts.
 
