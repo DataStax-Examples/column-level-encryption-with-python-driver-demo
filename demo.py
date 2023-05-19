@@ -12,16 +12,18 @@ table = 'my_table'
 config_file = '../GeneratedToken.csv'
 scb_file = '../secure-connect-playlist.zip'
 
-# store the key somewhere, make sure to read it in when you want to read back this data
+# You'll want to generate a unique key and store it somewhere, make sure to read it in when you want to read back this data
 # KEY = os.urandom(AES256_KEY_SIZE_BYTES)
+# DO NOT KEEP THE ONE BELOW IN PRODUCTION
 KEY = b'\xdb\x8b\xd0$I \x8c\x15\x99\x9c\xe9\xdf\x050O\xa6Fo\x7f_\xe7\x06\x84\xda\x9d\xe4\xdf/\x97\x99\xbd\x18'
 CLOUD_CONFIG = {
     'secure_connect_bundle': scb_file
 }
 
 
-# store the IV somewhere, make sure to read it in when you want to read back this data
+# You'll want to generate a unique iv and store it somewhere, make sure to read it in when you want to read back this data
 #iv = os.urandom(AES256_BLOCK_SIZE_BYTES)
+# DO NOT KEEP THE ONE BELOW IN PRODUCTION
 iv = b'\x83\x97\x97\\V\x0c\x1eQe\xb4\xe5k\x87Z\x14\xe6'
 
 
