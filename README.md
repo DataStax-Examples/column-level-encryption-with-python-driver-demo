@@ -1,17 +1,19 @@
+![GitHub](https://img.shields.io/github/license/DataStax-Examples/column-level-encryption-with-python-driver-demo?style=plastic)
+
 # Cassandra Column Encryption Demo
 
-This repository contains a Python script and helper shell scripts demonstrating the usage of the AES256 column encryption feature in the Cassandra Python driver.
+This repository contains a Python script and helper shell scripts demonstrating the usage of the AES256 column encryption feature in the [Cassandra Python driver](https://docs.datastax.com/en/developer/python-driver/latest/column_encryption/).
 
 ## Overview
 
-The Cassandra Column Encryption Demo showcases how to leverage AES256 column encryption in the Cassandra Python driver. The demo script connects to a Cassandra database, encrypts specific column data, and guides the user through basic read and write operations.
+The Cassandra Column Encryption Demo showcases how to leverage [AES256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) column encryption in the Cassandra Python driver. The demo script connects to a Cassandra database, encrypts specific column data, and guides the user through basic read and write operations.
 
 ## Prerequisites
 
 To run the demo, ensure that the following prerequisites are met:
 
 - Python 3.6 or newer installed on your machine.
-- Access to an Astra database or a local Cassandra cluster.
+- Access to [an Astra database](https://astra.datastax.com). This comes with [a generous free-tier](https://docs.datastax.com/en/astra-serverless/docs/manage/org/manage-billing.html#_free_plans) to get started quickly.
 - A Unix-like environment (e.g., Linux, macOS, WSL) for running the shell scripts.
 
 ## File Descriptions
@@ -28,42 +30,42 @@ The repository includes the following files:
 
 To get started with the demo, follow these steps:
 
+1. [Create a keyspace](https://docs.datastax.com/en/astra-serverless/docs/manage/db/manage-keyspaces.html#_adding_a_new_keyspace) in the target database if one doesn't already exist.
 
-1. Obtain a secure connect bundle`secure-connect-<DB Name>.zip` and a Token Configuration file `GeneratedToken.csv` for the desired database to use for the demonstration
+2. [Obtain a secure connect bundle \[SCB\]](https://docs.datastax.com/en/astra-serverless/docs/connect/secure-connect-bundle.html) `secure-connect-<DB Name>.zip` and [a Token Configuration file](https://docs.datastax.com/en/astra-serverless/docs/manage/org/managing-org.html#_create_application_token) `GeneratedToken.csv` for the desired database to use for the demonstration.
 
-2. Create a keyspace in the target database if one doesn't already exist
-
-3. Create a directory to house the demo files, and cd into the directory
+3. Create a directory to house the demo files, and cd into the directory:
 
    ```shell
    mkdir demos
    cd demos
    ```
 
-4. Place your `secure-connect-<DB Name>.zip` and `GeneratedToken.csv` files into this directory
+4. Place your `secure-connect-<DB Name>.zip` and `GeneratedToken.csv` files into this directory.
 
 5. Clone this repository to your local machine using the following command:
 
    ```shell
-   git clone https://github.com/rogerb-ds/CLE-Demo.git
+   git clone git@github.com:DataStax-Examples/column-level-encryption-with-python-driver-demo.git
    ```
-The resulting hierarchy should be as follows
 
-    demos
-    ├── CLE-Demo
-    │   ├── LICENSE
-    │   ├── README.md
-    │   ├── cqlsh.sh
-    │   ├── demo.py
-    │   ├── requirements.txt
-    │   └── setup.sh
-     ├── GeneratedToken.csv
-    └── secure-connect-bundle.zip
+   The resulting hierarchy should be as follows
+
+       demos
+       ├── column-level-encryption-with-python-driver-demo
+       │   ├── LICENSE
+       │   ├── README.md
+       │   ├── cqlsh.sh
+       │   ├── demo.py
+       │   ├── requirements.txt
+       │   └── setup.sh
+        ├── GeneratedToken.csv
+       └── secure-connect-<DB Name>.zip
 
 6. Navigate to the cloned repository directory:
 
    ```shell
-   cd CLE-Demo
+   cd column-level-encryption-with-python-driver-demo
    ```
 
 7. Run the `setup.sh` script to download cqlsh, install the required Cassandra driver package, and configure necessary variables for the demo.
@@ -78,30 +80,32 @@ The resulting hierarchy should be as follows
 
 10. In the window that will display the database, you can run the `cqlsh.sh` script, which launches a CQLSH instance:
 
-   ```shell
-   sh ./cqlsh.sh
-   ```
-
+    ```shell
+    sh ./cqlsh.sh
+    ```
 
 11. In the second window, you can execute the demo script with the `--setup` flag by running the following command.
 
-   ```shell
-   python demo.py --setup
-   ```
+    ```shell
+    python demo.py --setup
+    ```
+
 12. It will return the necessary CQL to set up the database for the demo. Copy and paste the CQL into the CQLSH window. It will also include a select that will return 0 results (since this is a new database)
 
 13. Run the demo script again, but without the `--setup` flag and insert some rows.
 
-   ```shell
-   python demo.py
-   ```
+    ```shell
+    python demo.py
+    ```
 
 14. Continue running the demo script to insert as many rows as you like. As you insert rows, can you can re-run the select statement from the `python demo.py --setup` output to demonstrate how the rows being added are encrypted in the database, but the python program (using the driver) is able to decrypt and display the encrypted values.
-   ```shell
-   python demo.py
-   ```
+
+    ```shell
+    python demo.py
+    ```
 
 ## Conclusion
 
 The Cassandra Column Encryption Demo provides a practical example of leveraging AES256 column encryption in the Cassandra Python driver. By running the demo and exploring the provided scripts, you can gain a better understanding of how to secure sensitive column data in your Cassandra applications.
 
+---
