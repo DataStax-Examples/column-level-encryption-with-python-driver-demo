@@ -9,13 +9,14 @@ from cassandra.auth import PlainTextAuthProvider
 # Setting up configuration constants
 keyspace = 'my_ks'
 table = 'my_table'
-config_file = "../GeneratedToken.csv"
+config_file = '../GeneratedToken.csv'
+scb_file = '../secure-connect-playlist.zip'
 
 # store the key somewhere, make sure to read it in when you want to read back this data
 # KEY = os.urandom(AES256_KEY_SIZE_BYTES)
 KEY = b'\xdb\x8b\xd0$I \x8c\x15\x99\x9c\xe9\xdf\x050O\xa6Fo\x7f_\xe7\x06\x84\xda\x9d\xe4\xdf/\x97\x99\xbd\x18'
 CLOUD_CONFIG = {
-    'secure_connect_bundle': '../secure-connect-playlist.zip'
+    'secure_connect_bundle': scb_file
 }
 
 
